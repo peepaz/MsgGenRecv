@@ -64,28 +64,32 @@ public class Main {
                 switch (args[0]) {
 
                     case"send_messages":
-                        createQueueIfNotExist(queueName);
                         queueName = args[1];
+                        createQueueIfNotExist(queueName);
                         msgCount = Integer.parseInt(args[2]);
                         msgSendRatePerSecond = Integer.parseInt(args[3]);
-                        sendMessages(msgCount,msgSendRatePerSecond);
                         if (args.length == 5) {
                             if (args[4].equalsIgnoreCase("-v")) isVerbose = true;
                         }
+                        sendMessages(msgCount,msgSendRatePerSecond);
+
                         break;
 
                     case "receive_messages":
                         queueName = args[1];
                         msgRecvRateConcurrently = Integer.parseInt(args[2]);
-                        receiveMessages(queueName,msgRecvRateConcurrently);
                         if (args.length == 4) {
                             if (args[3].equalsIgnoreCase("-v")) isVerbose = true;
                         }
+                        receiveMessages(queueName,msgRecvRateConcurrently);
+
                         break;
 
                     default:
                         System.out.println("invalid_option");
                 }
+
+            }else {
 
             }
 
@@ -295,18 +299,20 @@ public class Main {
         // register the RegisterMessageHandler callback
         queueClient.registerMessageHandler(new IMessageHandler() {
 
-                                               // callback invoked when the message handler loop has obtained a message
-                                               public CompletableFuture<Void> onMessageAsync(IMessage message) {
+           // callback invoked when the message handler loop has obtained a message
+           public CompletableFuture<Void> onMessageAsync(IMessage message) {
 
-                                                   // receives message is passed to callback
-                                                   if (message.getLabel() != null &&
-                                                           message.getContentType() != null &&
-                                                           message.getLabel().contentEquals("products") &&
-                                                           message.getContentType().contentEquals("application/json")) {
+               // receives message is passed to callback
+               if (message.getLabel() != null &&
+                       message.getContentType() != null &&
+                       message.getLabel().contentEquals("products") &&
+                       message.getContentType().contentEquals("application/json")) {
 
-                                                       byte[] body = message.getBody();
-                                                       String products = GSON.fromJson(new String(body, UTF_8), String.class);
-                                                       System.out.println(products);
+                   byte[] body = message.getBody();
+                   String products = GSON.fromJson(new String(body, UTF_8), String.class);
+                   if (isVerbose) {
+                       System.out.println(products);
+                   }
 
 //                           System.out.printf(
 //                                   "\n\t\t\t\tMessage received: \n\t\t\t\t\t\tMessageId = %s, \n\t\t\t\t\t\tSequenceNumber = %s," +
@@ -320,17 +326,19 @@ public class Main {
 //                                   products != null ? products.get("UserId") : "",
 //                                   products != null ? products.get("Product Name") : "",
 //                                   products != null ? products.get("Sale Price") : "");
-                                                   }
-                                                   return CompletableFuture.completedFuture(null);
-                                               }
+               }
+               return CompletableFuture.completedFuture(null);
+           }
 
-                                               // callback invoked when the message handler has an exception to report
-                                               public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
-                                                   System.out.printf(exceptionPhase + "-" + throwable.getMessage());
-                                               }
-                                           },
-                //concurrent call, messages are auto-completed, auto-renew duration
-                new MessageHandlerOptions(recvMsgRate, true, Duration.ofMinutes(1)));
+                   // callback invoked when the message handler has an exception to report
+                   public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
+                       System.out.printf(exceptionPhase + "-" + throwable.getMessage());
+                   }
+               },
+        //concurrent call, messages are auto-completed, auto-renew duration
+        new MessageHandlerOptions(recvMsgRate, true, Duration.ofMinutes(1)));
+        System.out.println("Waiting for messages...");
+
 
     }
 
