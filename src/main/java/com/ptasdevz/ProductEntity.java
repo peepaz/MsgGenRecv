@@ -10,7 +10,15 @@ public  class ProductEntity extends TableServiceEntity {
     private String ProductName;
     private String SalePrice;
     private String TransactionDate;
+    private String errorMsg;
 
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
 
     public String getTransactionID() {
         return TransactionID;
@@ -71,6 +79,7 @@ public  class ProductEntity extends TableServiceEntity {
                 ", ProductName='" + ProductName + '\'' +
                 ", SalePrice='" + SalePrice + '\'' +
                 ", TransactionDate='" + TransactionDate + '\'' +
+                ", errorMsg='" + errorMsg + '\'' +
                 '}';
     }
 }

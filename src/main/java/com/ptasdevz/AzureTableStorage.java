@@ -18,9 +18,10 @@ public class AzureTableStorage {
             "EndpointSuffix=core.windows.net";
 
     private  CloudStorageAccount account;
-    private   CloudTableClient tableClient;
+    private  CloudTableClient tableClient;
     private ProductEntityPool productEntityPool;
     private String productTable = "productentity";
+    private String failStore = "failstore";
     private static  AzureTableStorage azureTableStorage = new AzureTableStorage();
 
     private AzureTableStorage(){
@@ -77,9 +78,27 @@ public class AzureTableStorage {
         }
         else {
             this.createTableIfNotExist(productTable);
+            insertProductEntity(productEntity);
         }
 
     }
+
+    public void insertFailStoreEntity(ProductEntity productEntity) throws URISyntaxException, StorageException {
+
+        boolean isTableExist = isTableExist(failStore);
+        if (isTableExist) {
+
+            CloudTable cloudTable = tableClient.getTableReference(failStore);
+            TableOperation insertProduct = TableOperation.insertOrReplace(productEntity);
+            cloudTable.execute(insertProduct);
+        }
+        else {
+            this.createTableIfNotExist(failStore);
+            insertFailStoreEntity(productEntity);
+        }
+
+    }
+
 
     private boolean isTableExist(String tableName) {
 

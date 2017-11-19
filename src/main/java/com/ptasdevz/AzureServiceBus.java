@@ -21,6 +21,7 @@ import java.sql.Timestamp;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -39,7 +40,7 @@ public class AzureServiceBus {
     private static List<Integer> requestCoutner = Collections.synchronizedList(new ArrayList<Integer>());
     private static  AzureServiceBus azureServiceBus = new AzureServiceBus();
     private static ServiceBusContract service;
-    private static int errorInjectionNumber = 50000;
+    private static int errorInjectionNumber = 500; //threshold for error msg
     private static final Gson GSON = new Gson();
     private static AzureTableStorage azureTableStorage;
 
@@ -78,7 +79,7 @@ public class AzureServiceBus {
             final int requestSize = msgCount;
             final int requestPerSecond = msgRatePerSecond;
             sendClient = new QueueClient(new ConnectionStringBuilder(connectionString, queueName), ReceiveMode.PEEKLOCK);
-
+            System.out.println("Running...");
             final String timeStr = "\n\nStarted - Request sent: " + requestCoutner.size()  + " time: "+ getTimeStamp();
             final ProductEntityPool productEntityPool = new ProductEntityPool();
 
@@ -92,18 +93,20 @@ public class AzureServiceBus {
 //                        System.out.println("Request sent at time: " +getTimeStamp());
                         try {
 
+                            boolean isError = false;
+                            if (c[0] % errorInjectionNumber == 0) isError = true;
                             final String messageId = Integer.toString(c[0]);
-//                            String msg = "{'TransactionID':'"+c[0]+"','UserId':'cust_"+Math.random()*1000
-//                                    + "','SellerID':'usr_"+Math.random()*1000 +"','ProductName':'"
-//                                    +products[c[0] % products.length]+"','SalePrice':"
-//                                    +Math.random()*10000+",'TransactionDate':'"+getTimeStamp()+"'}";
 
                             ProductEntity productEntity = (ProductEntity) productEntityPool.checkOut();
                             productEntity.setTransactionID(String.valueOf(c[0]));
                             productEntity.setUserId("cust_"+Math.random()*1000);
                             productEntity.setSellerID("user_"+Math.random()*1000);
                             productEntity.setProductName(products[c[0] % products.length]);
-                            productEntity.setSalePrice(String.valueOf(Math.random()*10000));
+
+                            // omit sale attribute to simulate error
+                            if (!isError) {
+                                productEntity.setSalePrice(String.valueOf(Math.random() * 10000));
+                            }
                             productEntity.setTransactionDate(String.valueOf(getTimeStamp()));
                             productEntityPool.checkIn(productEntity);
 
@@ -113,8 +116,12 @@ public class AzureServiceBus {
                             message.setMessageId(messageId);
                             message.setTimeToLive(Duration.ofMinutes(1440*10));
 
-                            //introduce error
-//                            if (requestCoutner.size() %)
+                            //simulate missing sale attribute error
+                            if (isError){
+                                HashMap <String,String> errorMsg = new HashMap<>();
+                                errorMsg.put("errorMsg","missing sale attribute");
+                                message.setProperties(errorMsg);
+                            }
                             tasks.add(
                                     sendClient.sendAsync(message).thenRunAsync(() -> {
                                         if (isVerbose) System.out.printf("\n\tMessage acknowledged: Id = %s", message.getMessageId());
@@ -287,9 +294,18 @@ public class AzureServiceBus {
 
                    byte[] body = message.getBody();
                    ProductEntity product = GSON.fromJson(new String(body, UTF_8), ProductEntity.class);
+                   HashMap<String,String> error = (HashMap<String, String>) message.getProperties();
+
                    try {
-                       //message is stored to table storage
-                       AzureTableStorage.getInstance().insertProductEntity(product);
+                       if (error == null) { //message does not contain an error
+                           //message is stored to table storage
+                           AzureTableStorage.getInstance().insertProductEntity(product);
+                       }
+                       else{
+
+                           product.setErrorMsg(error.get("errorMsg"));
+                           AzureTableStorage.getInstance().insertFailStoreEntity(product);
+                       }
 
                    } catch (URISyntaxException e) {
                        e.printStackTrace();
@@ -310,8 +326,8 @@ public class AzureServiceBus {
            }
        },
                 //concurrent call, messages are auto-completed, auto-renew duration
-                new MessageHandlerOptions(recvMsgRate, true, Duration.ofMinutes(1)));
-        System.out.println("Waiting for messages...");
+                new MessageHandlerOptions(recvMsgRate, true, Duration.ofMinutes(5)));
+        System.out.println("Running...");
 
 
     }
