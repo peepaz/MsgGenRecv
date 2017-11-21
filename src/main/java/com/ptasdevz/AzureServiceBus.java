@@ -1,10 +1,10 @@
 package com.ptasdevz;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.microsoft.azure.servicebus.*;
 import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
 import com.microsoft.azure.servicebus.primitives.ServiceBusException;
-import com.microsoft.azure.storage.StorageException;
 import com.microsoft.windowsazure.Configuration;
 import com.microsoft.windowsazure.exception.ServiceException;
 import com.microsoft.windowsazure.services.servicebus.ServiceBusConfiguration;
@@ -16,13 +16,9 @@ import com.microsoft.windowsazure.services.servicebus.models.ReceiveMessageOptio
 import com.microsoft.windowsazure.services.servicebus.models.ReceiveQueueMessageResult;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.sql.Timestamp;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -42,9 +38,12 @@ public class AzureServiceBus {
     private static ServiceBusContract service;
     private static int errorInjectionNumber = 500; //threshold for error msg
     private static final Gson GSON = new Gson();
-    private static AzureTableStorage azureTableStorage;
-
-
+    private static int timer = 0;
+    private static int timerMax = 20 ;
+    private static AzureStorage azureStorage;
+    private static Queue<ProductEntity> productsTostore = new LinkedList<>();
+    private static Queue<ProductEntity> productsTostoreWithErrors = new LinkedList<>();
+//    private static List<ProductEntity> productsTostoreWithErrors = Collections.synchronizedList(new ArrayList<>());
 
     private AzureServiceBus(){
 
@@ -56,7 +55,7 @@ public class AzureServiceBus {
                         ".servicebus.windows.net"
                 );
         service = ServiceBusService.create(config);
-        azureTableStorage = AzureTableStorage.getInstance();
+        azureStorage = AzureStorage.getInstance();
 
 
     };
@@ -90,7 +89,6 @@ public class AzureServiceBus {
 
                     @Override
                     public void run() {
-//                        System.out.println("Request sent at time: " +getTimeStamp());
                         try {
 
                             boolean isError = false;
@@ -103,7 +101,7 @@ public class AzureServiceBus {
                             productEntity.setSellerID("user_"+Math.random()*1000);
                             productEntity.setProductName(products[c[0] % products.length]);
 
-                            // omit sale attribute to simulate error
+                            //omit sale attribute to simulate error
                             if (!isError) {
                                 productEntity.setSalePrice(String.valueOf(Math.random() * 10000));
                             }
@@ -126,7 +124,6 @@ public class AzureServiceBus {
                                     sendClient.sendAsync(message).thenRunAsync(() -> {
                                         if (isVerbose) System.out.printf("\n\tMessage acknowledged: Id = %s", message.getMessageId());
                                         requestCoutner.add(1);
-
                                         if (requestCoutner.size() == requestSize) {
                                             System.out.println(timeStr);
                                             System.out.println("Finished - Request sent: " + requestCoutner.size()  +
@@ -167,6 +164,9 @@ public class AzureServiceBus {
      * @throws Exception
      */
     public static void receiveMessages(String queueName, int recvMsgRate, boolean isVerbose) throws Exception {
+        startCountDownTimer();
+        startServiceToInsert();
+
 
         boolean isQueueExist = isQueueExist(queueName);
         if (isQueueExist) {
@@ -286,6 +286,7 @@ public class AzureServiceBus {
            // callback invoked when the message handler loop has obtained a message
            public CompletableFuture<Void> onMessageAsync(IMessage message) {
 
+
                // receives message is passed to callback
                if (message.getLabel() != null &&
                        message.getContentType() != null &&
@@ -296,29 +297,22 @@ public class AzureServiceBus {
                    ProductEntity product = GSON.fromJson(new String(body, UTF_8), ProductEntity.class);
                    HashMap<String,String> error = (HashMap<String, String>) message.getProperties();
 
-                   try {
-                       if (error == null) { //message does not contain an error
-                           //message is stored to table storage
-                           AzureTableStorage.getInstance().insertProductEntity(product);
-                       }
-                       else{
+                   if (error != null) { //message does not contain an error
+                       product.setErrorMsg(error.get("errorMsg"));
+                       productsTostoreWithErrors.add(product);
 
-                           product.setErrorMsg(error.get("errorMsg"));
-                           AzureTableStorage.getInstance().insertFailStoreEntity(product);
-                       }
-
-                   } catch (URISyntaxException e) {
-                       e.printStackTrace();
-                   } catch (StorageException e) {
-                       e.printStackTrace();
+                   }else {
+                       productsTostore.add(product);
                    }
+
                    if (isVerbose) {
                        System.out.println(product.toString());
                    }
-
                }
+//               return CompletableFuture.completedFuture(null);
                return CompletableFuture.completedFuture(null);
            }
+
 
            // callback invoked when the message handler has an exception to report
            public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
@@ -329,8 +323,83 @@ public class AzureServiceBus {
                 new MessageHandlerOptions(recvMsgRate, true, Duration.ofMinutes(5)));
         System.out.println("Running...");
 
+    }
+    public static void startServiceToInsert(){
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+
+                System.out.println(productsTostore.size());
+
+                // Your database code here
+                if (productsTostore.size() > 0) {
+
+                    JsonArray productArray = new JsonArray();
+                    int size = productsTostore.size();
+                    ProductEntity product;
+                    for (int i = 0; i < size; i++) {
+                        product = productsTostore.poll();
+                        if (product != null) {
+                            productArray.add(GSON.toJson(product));
+                        }
+                        else {
+//                            System.out.println(productsTostore);
+//                            System.out.println(product);
+                        }
+//                                    size--;
+                    }
+                    String productTosStoreJsonListStr = GSON.toJson(productArray);
+                    AzureStorage.getInstance().insertProductBlob(productTosStoreJsonListStr, AzureStorage.productContainer);
+                }
+
+                if (productsTostoreWithErrors.size() > 0) {
+
+                    JsonArray productArrayWithErrs = new JsonArray();
+                    int size = productsTostoreWithErrors.size();
+                    ProductEntity product;
+                    for (int i = 0; i < size; i++) {
+                        product = productsTostoreWithErrors.poll();
+                        if (product != null) {
+                            productArrayWithErrs.add(GSON.toJson(product));
+                        }
+//                                    size--;
+                    }
+                    String productTosStoreWithErrJsonListStr = GSON.toJson(productArrayWithErrs);
+                    AzureStorage.getInstance().insertProductBlob(productTosStoreWithErrJsonListStr, AzureStorage.failStoreContainer);
+                }
+            }
+        }, 30*1000, 30*1000);
 
     }
+
+    public static  int getTimer(){
+        return timer;
+    }
+    private static void startCountDownTimer(){
+
+        Thread th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                int counter = 1;
+                while (true) {
+
+                    try {
+                        timer =  timerMax - (counter % timerMax);
+                        counter++;
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        th.start();
+
+    }
+
 
     //============================Azure Service Bus Methods End===============================
     private static Timestamp getTimeStamp(){

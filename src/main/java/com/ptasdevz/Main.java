@@ -1,10 +1,13 @@
 
 package com.ptasdevz;
 
-import java.net.URISyntaxException;
-
-import com.microsoft.azure.storage.*;
-import com.microsoft.azure.storage.table.*;
+/**
+ * Assignment 3: Cloud Scale
+ * Message generator receiver 0.0.1
+ * The purpose of this program is to generate a high volume of messages to pushed onto an Azure Service Bus queue
+ * and to also operate as an asynchronous receiver to get messages from an Azure Service Bus Queue
+ *
+ */
 
 /**
  * Message generator/receive: Permits the generation and retrieval of messages from  Azure Service Bus queues.
