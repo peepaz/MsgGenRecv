@@ -9,7 +9,7 @@ public abstract class ObjectPool<T>  {
     private Hashtable<T, Long> locked, unlocked;
 
     public ObjectPool() {
-        expirationTime = 30000; // 30 seconds
+        expirationTime = 5000; // 5 seconds
         locked = new Hashtable<T, Long>();
         unlocked = new Hashtable<T, Long>();
     }

@@ -58,7 +58,7 @@ public class Main {
                         break;
 
                     default:
-                        System.out.println("invalid_option");
+                        System.out.println("invalid_action");
                 }
 
             }else {

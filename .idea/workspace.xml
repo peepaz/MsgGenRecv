@@ -7,14 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4aba7f86-fb17-4048-891e-adcbd22a3da0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureTableStorage.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureTableStorage.java" afterPath="$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureStorage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/MsgGenRecv_jar/MsgGenRecv.jar" afterPath="$PROJECT_DIR$/out/artifacts/MsgGenRecv_jar/MsgGenRecv.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus$1.class" afterPath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus$2.class" afterPath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus$3.class" afterPath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus$4.class" afterPath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus.class" afterPath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureServiceBus.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureStorage.class" afterPath="$PROJECT_DIR$/target/classes/com/ptasdevz/AzureStorage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/ptasdevz/Main.class" afterPath="$PROJECT_DIR$/target/classes/com/ptasdevz/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureServiceBus.java" afterPath="$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureServiceBus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ptasdevz/ObjectPool.java" afterPath="$PROJECT_DIR$/src/main/java/com/ptasdevz/ObjectPool.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,48 +33,10 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="213">
+              <caret line="60" column="61" lean-forward="true" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="docComment;class#Main#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AzureStorage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureStorage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#AzureStorage#0;class#AzureStorage#0" expanded="false" />
-                <element signature="method#createTableIfNotExist#0;class#AzureStorage#0" expanded="false" />
-                <element signature="method#insertProductEntity#0;class#AzureStorage#0" expanded="false" />
-                <element signature="method#insertProductEntity#1;class#AzureStorage#0" expanded="false" />
-                <element signature="method#insertProductEntityBatch#0;class#AzureStorage#0" expanded="false" />
-                <element signature="method#insertFailStoreEntity#0;class#AzureStorage#0" expanded="false" />
-                <element signature="method#insertProductBlob#0;class#AzureStorage#0" expanded="false" />
-                <element signature="method#isTableExist#0;class#AzureStorage#0" expanded="false" />
-                <element signature="method#isBlobContainerExist#0;class#AzureStorage#0" expanded="false" />
-                <element signature="e#6970#6971#0" expanded="true" />
-                <element signature="e#7005#7006#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ObjectPool.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/ObjectPool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#ObjectPool#0;class#ObjectPool#0" expanded="false" />
-                <element signature="method#checkOut#0;class#ObjectPool#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -79,54 +45,23 @@
       <file leaf-file-name="AzureServiceBus.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureServiceBus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="383" column="0" lean-forward="true" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
+            <state relative-caret-position="357">
+              <caret line="155" column="17" lean-forward="true" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="docComment;method#sendMessages#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="docComment;method#receiveMessages#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="method#receiveMessages#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="docComment;method#createQueueIfNotExist#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="method#createQueueIfNotExist#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="docComment;method#isQueueExist#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="method#isQueueExist#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="method#deleteQueueIfExist#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="method#getMessage#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="docComment;method#registerReceiver#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="method#registerReceiver#0;class#AzureServiceBus#0" expanded="false" />
-                <element signature="method#notifyException#0;class#12727:14358" expanded="false" />
-                <element signature="e#17291#19259#0" expanded="true" />
-                <element signature="e#19258#19259#0" expanded="true" />
-                <element signature="e#19321#19322#0" expanded="true" />
-                <element signature="e#19349#19350#0" expanded="true" />
+                <element signature="e#14504#16472#0" expanded="true" />
+                <element signature="e#16471#16472#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/ProductEntity.java">
+      <file leaf-file-name="ObjectPool.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/ObjectPool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="72" column="13" lean-forward="true" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
+            <state relative-caret-position="-112">
+              <caret line="11" column="35" lean-forward="false" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductEntityPool.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/ProductEntityPool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-              <folding>
-                <element signature="e#168#169#0" expanded="true" />
-                <element signature="e#191#192#0" expanded="true" />
-                <element signature="e#244#245#0" expanded="true" />
-                <element signature="e#286#287#0" expanded="true" />
-                <element signature="e#342#343#0" expanded="true" />
-                <element signature="e#374#375#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -152,12 +87,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ptasdevz/ProductEntityPool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ptasdevz/ObjectPool.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ptasdevz/ProductEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureTableStorage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureStorage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ptasdevz/ObjectPool.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureServiceBus.java" />
       </list>
     </option>
@@ -189,10 +124,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -220,20 +153,14 @@
             </path>
             <path>
               <item name="MsgGenRecv" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MsgGenRecv" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ptasdevz" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MsgGenRecv" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -264,7 +191,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="com.ptasdevz.Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="receive_messages testqueue 500" />
+      <option name="PROGRAM_PARAMETERS" value="send_messages taskqueue 1000000 100" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -383,7 +310,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="49" width="2182" height="1402" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -399,19 +325,19 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32389677" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15502392" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972524" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.215311" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39966694" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972524" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -423,17 +349,68 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureServiceBus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3150">
+          <caret line="126" column="83" lean-forward="true" selection-start-line="126" selection-start-column="83" selection-end-line="126" selection-end-column="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#14504#16472#0" expanded="true" />
+            <element signature="e#16471#16472#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -443,11 +420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ObjectPool#0;class#ObjectPool#0" expanded="false" />
-            <element signature="method#checkOut#0;class#ObjectPool#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -455,25 +427,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7625">
           <caret line="305" column="69" lean-forward="true" selection-start-line="305" selection-start-column="69" selection-end-line="305" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#sendMessages#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="docComment;method#receiveMessages#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#receiveMessages#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="docComment;method#createQueueIfNotExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#createQueueIfNotExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="docComment;method#isQueueExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#isQueueExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#deleteQueueIfExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#getMessage#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="docComment;method#registerReceiver#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#registerReceiver#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#notifyException#0;class#12727:14358" expanded="false" />
-            <element signature="e#17291#19259#0" expanded="true" />
-            <element signature="e#19258#19259#0" expanded="true" />
-            <element signature="e#19321#19322#0" expanded="true" />
-            <element signature="e#19349#19350#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -489,7 +442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1225">
           <caret line="73" column="18" lean-forward="false" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -497,14 +449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding>
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#191#192#0" expanded="true" />
-            <element signature="e#244#245#0" expanded="true" />
-            <element signature="e#286#287#0" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#374#375#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -512,35 +456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1600">
           <caret line="72" column="27" lean-forward="true" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#AzureStorage#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#createTableIfNotExist#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertProductEntity#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertProductEntity#1;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertProductEntityBatch#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertFailStoreEntity#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertProductBlob#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#isTableExist#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#isBlobContainerExist#0;class#AzureStorage#0" expanded="false" />
-            <element signature="e#6970#6971#0" expanded="true" />
-            <element signature="e#7005#7006#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/ProductEntityPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding>
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#191#192#0" expanded="true" />
-            <element signature="e#244#245#0" expanded="true" />
-            <element signature="e#286#287#0" expanded="true" />
-            <element signature="e#342#343#0" expanded="true" />
-            <element signature="e#374#375#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -552,80 +467,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/ProductEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
+        <state relative-caret-position="1200">
           <caret line="72" column="13" lean-forward="true" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/ProductEntityPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/ObjectPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ObjectPool#0;class#ObjectPool#0" expanded="false" />
-            <element signature="method#checkOut#0;class#ObjectPool#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="-112">
+          <caret line="11" column="35" lean-forward="false" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="213">
+          <caret line="60" column="61" lean-forward="true" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureStorage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#AzureStorage#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#createTableIfNotExist#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertProductEntity#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertProductEntity#1;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertProductEntityBatch#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertFailStoreEntity#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#insertProductBlob#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#isTableExist#0;class#AzureStorage#0" expanded="false" />
-            <element signature="method#isBlobContainerExist#0;class#AzureStorage#0" expanded="false" />
-            <element signature="e#6970#6971#0" expanded="true" />
-            <element signature="e#7005#7006#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ptasdevz/AzureServiceBus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="383" column="0" lean-forward="true" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
+        <state relative-caret-position="357">
+          <caret line="155" column="17" lean-forward="true" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="docComment;method#sendMessages#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="docComment;method#receiveMessages#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#receiveMessages#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="docComment;method#createQueueIfNotExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#createQueueIfNotExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="docComment;method#isQueueExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#isQueueExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#deleteQueueIfExist#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#getMessage#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="docComment;method#registerReceiver#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#registerReceiver#0;class#AzureServiceBus#0" expanded="false" />
-            <element signature="method#notifyException#0;class#12727:14358" expanded="false" />
-            <element signature="e#17291#19259#0" expanded="true" />
-            <element signature="e#19258#19259#0" expanded="true" />
-            <element signature="e#19321#19322#0" expanded="true" />
-            <element signature="e#19349#19350#0" expanded="true" />
+            <element signature="e#14504#16472#0" expanded="true" />
+            <element signature="e#16471#16472#0" expanded="true" />
           </folding>
         </state>
       </provider>

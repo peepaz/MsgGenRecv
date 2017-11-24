@@ -40,6 +40,8 @@ public class AzureServiceBus {
     private static final Gson GSON = new Gson();
     private static int timer = 0;
     private static int timerMax = 20 ;
+    private static int sleepTime = 0;
+
     private static AzureStorage azureStorage;
     private static Queue<ProductEntity> productsTostore = new LinkedList<>();
     private static Queue<ProductEntity> productsTostoreWithErrors = new LinkedList<>();
@@ -84,7 +86,8 @@ public class AzureServiceBus {
 
             while (true) {
 
-                Thread.sleep(1000/requestPerSecond);
+
+                Thread.sleep(0,1);
                 pool.execute(new Runnable() {
 
                     @Override
@@ -109,6 +112,7 @@ public class AzureServiceBus {
                             productEntityPool.checkIn(productEntity);
 
                             Message message = new Message(GSON.toJson(productEntity, ProductEntity.class).getBytes(UTF_8));
+
                             message.setContentType("application/json");
                             message.setLabel("products");
                             message.setMessageId(messageId);
@@ -120,21 +124,25 @@ public class AzureServiceBus {
                                 errorMsg.put("errorMsg","missing sale attribute");
                                 message.setProperties(errorMsg);
                             }
-                            tasks.add(
-                                    sendClient.sendAsync(message).thenRunAsync(() -> {
-                                        if (isVerbose) System.out.printf("\n\tMessage acknowledged: Id = %s", message.getMessageId());
-                                        requestCoutner.add(1);
-                                        if (requestCoutner.size() == requestSize) {
-                                            System.out.println(timeStr);
-                                            System.out.println("Finished - Request sent: " + requestCoutner.size()  +
-                                                    " time: "+ getTimeStamp());
-                                            try {
-                                                sendClient.close();
-                                            } catch (ServiceBusException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    }));
+                            String id = message.getMessageId();
+                            sendClient.sendAsync(message).thenRunAsync(() -> {
+                                if (isVerbose) System.out.printf("\n\tMessage acknowledged: Id = %s", id);
+                                requestCoutner.add(1);
+                                tasks.remove(sendClient);
+
+                                if (requestCoutner.size() == requestSize) {
+                                    System.out.println(timeStr);
+                                    System.out.println("Finished - Request sent: " + requestCoutner.size() +
+                                            " time: " + getTimeStamp());
+                                    try {
+                                        sendClient.close();
+                                    } catch (ServiceBusException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            message = null;
+
 
 
                         } catch (Exception e) {
@@ -143,7 +151,7 @@ public class AzureServiceBus {
                     }
                 });
 
-                if (c[0] == requestSize) {
+                if (c[0] == requestSize-1) {
                     break;
                 }
                 c[0]++;
@@ -154,6 +162,11 @@ public class AzureServiceBus {
         finally {
             pool.shutdown();
         }
+    }
+
+    private static void switchSleepTime() {
+        if (sleepTime == 0) sleepTime = 1;
+        else sleepTime = 0;
     }
 
     /**
